@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Update and install Apache HTTP Server
+sudo yum update -y
+sudo yum install -y httpd
+
+# Start Apache service
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+# Create a simple HTML page to test
+echo "<html><body><h1>Hello from EC2 HTTP Service!</h1></body></html>" | sudo tee /var/www/html/index.html
+
+# Ensure Apache is running
+sudo systemctl status httpd
